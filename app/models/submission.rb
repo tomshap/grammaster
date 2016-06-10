@@ -1,4 +1,4 @@
-class Submissions < ActiveRecord::Base
+class Submission < ActiveRecord::Base
 
   belongs_to :gramventure 
   belongs_to :image 

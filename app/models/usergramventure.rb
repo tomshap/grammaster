@@ -1,4 +1,4 @@
-class UserGramventures < ActiveRecord::Base
+class UserGramventure < ActiveRecord::Base
 
   belongs_to :users
   belongs_to :gramventures
