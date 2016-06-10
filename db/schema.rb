@@ -11,6 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160610171746) do
+
+  create_table "gramventures", force: :cascade do |t|
+    t.string  "cover_image"
+    t.string  "name"
+    t.string  "brief"
+    t.time    "time_to_enter"
+    t.integer "number_enteries"
+    t.string  "prize"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "url"
+    t.string "hashtag"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string  "user_name"
+    t.string  "full_name"
+    t.string  "email"
+    t.string  "instagram_handle"
+    t.string  "bio"
+    t.string  "links"
+    t.string  "cover_image"
+    t.boolean "participant"
+  end
 
 end
