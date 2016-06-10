@@ -1,12 +1,15 @@
-class Gramventures < ActiveRecord::Migration
+class CreateGramventures < ActiveRecord::Migration
   def change
     create_table :gramventures do |t|
-      t.string :cover_image
+      t.string :cover_image_url
       t.string :name
-      t.string :brief
-      t.time :time_to_enter
-      t.integer :number_enteries
+      t.text :brief
+      t.datetime :submission_end
+      t.datetime :voting_end
+      t.integer :number_entries
       t.string :prize
+      t.string :hashtag
+      t.integer :winning_submission_id
     end
   end
 end

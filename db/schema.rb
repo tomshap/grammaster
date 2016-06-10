@@ -11,31 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610171746) do
+ActiveRecord::Schema.define(version: 20160610213045) do
 
   create_table "gramventures", force: :cascade do |t|
-    t.string  "cover_image"
-    t.string  "name"
-    t.string  "brief"
-    t.time    "time_to_enter"
-    t.integer "number_enteries"
-    t.string  "prize"
+    t.string   "cover_image_url"
+    t.string   "name"
+    t.text     "brief"
+    t.datetime "submission_end"
+    t.datetime "voting_end"
+    t.integer  "number_entries"
+    t.string   "prize"
+    t.string   "hashtag"
+    t.integer  "winning_submission_id"
   end
 
   create_table "images", force: :cascade do |t|
-    t.string "url"
-    t.string "hashtag"
+    t.string  "url"
+    t.integer "user_id"
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.string  "user_name"
-    t.string  "full_name"
-    t.string  "email"
-    t.string  "instagram_handle"
-    t.string  "bio"
-    t.string  "links"
-    t.string  "cover_image"
-    t.boolean "participant"
+  create_table "submissions", force: :cascade do |t|
+    t.integer "image_id"
+    t.integer "gramventure_id"
+    t.text    "description"
+    t.integer "votes"
+  end
+
+  create_table "usergramventures", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "gramventure_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "full_name"
+    t.string "email"
+    t.string "instagram_handle"
+    t.string "bio"
+    t.string "personal_website"
+    t.string "cover_image_url"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "submission_id"
   end
 
 end
