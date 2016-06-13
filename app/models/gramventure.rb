@@ -1,17 +1,17 @@
 class Gramventure < ActiveRecord::Base
 
-  has_many :users, through: :usergramventures
+  has_many :usergramventures #, through: :users
   has_many :images, through: :submissions
 
-  validates :cover_image_url, presence: true 
-  validates :name, presence: true
-  validates :brief, presence: true
-  validate :submission_end_cannot_be_in_the_past
-  validate :voting_end_cannot_be_before_submission_end
-  validates :number_entries, numericality: true
-  validates :prize, presence: true
-  validates :hashtag, presence: true, uniqueness: true
-  validates :winning_submission_id, numericality: true
+  # validates :cover_image_url, presence: true 
+  # validates :name, presence: true
+  # validates :brief, presence: true
+  # validate :submission_end_cannot_be_in_the_past
+  # validate :voting_end_cannot_be_before_submission_end
+  # validates :number_entries, numericality: true
+  # validates :prize, presence: true
+  # validates :hashtag, presence: true, uniqueness: true
+  # validates :winning_submission_id, numericality: true
 
 
 
