@@ -6,6 +6,6 @@ class Submission < ActiveRecord::Base
   
   validates :image_id, numericality: true
   validates :gramventure_id, numericality: true
-  validates :votes, numericality: true
+  # validates :votes, numericality: true
 
 end
