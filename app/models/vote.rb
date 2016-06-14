@@ -1,7 +1,7 @@
 class Vote < ActiveRecord::Base
 
-  belongs_to :user
-  belongs_to :submission
+  # belongs_to :user
+  # belongs_to :submission
    
 
   # validates :user_id, numericality: true

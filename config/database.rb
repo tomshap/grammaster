@@ -1,12 +1,17 @@
-
 configure :development do
   ActiveRecord::Base.logger = Logger.new(STDOUT)
 end
 
 configure :development, :test do
   set :database, {
-    adapter: 'sqlite3',
-    database: APP_ROOT.join('db', "#{Sinatra::Application.environment}.sqlite3")
+    'development' => {
+      'adapter' => 'sqlite3',
+      'database' => APP_ROOT.join('db', 'development.sqlite3')
+    },
+    'test' => {
+      'adapter' => 'sqlite3',
+      'database' => APP_ROOT.join('db', 'test.sqlite3')
+    }
   }
 end
 

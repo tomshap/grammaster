@@ -1,0 +1,23 @@
+<!DOCTYPE hmtl>
+<html>
+  <head>
+    <script type="text/javascript" src="path/to/instafeed.min.js"></script>
+  </head>
+
+  <body>
+
+  <div id="instafeed"></div>
+
+  <script>
+   var feed = new Instafeed({
+        get: 'tagged',
+        tagName: 'gramventuregardening',
+        clientId: '88f03169b4f24be4820b56bb4c06b9c3'
+    });
+    feed.run();
+  </script>
+
+
+  </body>
+
+</html>

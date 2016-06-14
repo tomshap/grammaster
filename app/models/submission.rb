@@ -9,4 +9,5 @@ class Submission < ActiveRecord::Base
   # validates :gramventure_id, numericality: true
   # # validates :votes, numericality: true
 
+
 end
