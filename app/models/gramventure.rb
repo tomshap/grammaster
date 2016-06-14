@@ -1,7 +1,7 @@
 class Gramventure < ActiveRecord::Base
 
-  has_many :usergramventures #, through: :users
-  has_many :images, through: :submissions
+  # has_many :usergramventures #, through: :users
+  # has_many :images, through: :submissions
 
   # validates :cover_image_url, presence: true 
   # validates :name, presence: true

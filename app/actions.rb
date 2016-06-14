@@ -33,6 +33,12 @@ get "/oauth/callback" do
   redirect "http://localhost:8080/#/connect?token=#{response.access_token}"
 end
 
+get "/login" do
+  client = Instagram.client(:access_token => params[:token])
+  user = client.user
+  User.where(instagram_id: user.id).to_json
+end
+
 get "/nav" do
   html =
   """
