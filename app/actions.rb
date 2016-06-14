@@ -6,6 +6,7 @@ enable :sessions
 # helpers do
 
 
+
 # def current_user
 #     session[:id] ? @current_user = User.find(session[:id]) : nil
 #   end
@@ -60,9 +61,34 @@ get "/oauth/callback" do
 end
 
 get "/login" do
+  response.headers["Access-Control-Allow-Origin"] = "*"
   client = Instagram.client(:access_token => params[:token])
   user = client.user
   User.where(instagram_id: user.id).to_json
+end
+
+get "/profile" do
+  response.headers["Access-Control-Allow-Origin"] = "*"
+  @user = User.find(params[:cu])
+  @user.to_json
+end
+
+get "/profile/images" do
+  response.headers["Access-Control-Allow-Origin"] = "*"
+  client = Instagram.client(:access_token => params[:token])
+  @user = User.find(params[:cu])
+  images = client.tag_search("#{params[:hashtag]}")
+  all_images = []
+  for media_item in client.tag_recent_media(images[0].name)
+    url = media_item.images.standard_resolution.url.split('?')[0]
+    instagram_images = Image.find_by_url(url)
+    
+    if instagram_images.nil?
+      instagram_images = Image.create(url: url, user_id: params[:cu])
+    end
+    all_images << instagram_images
+  end
+  all_images.to_json
 end
 
 get "/nav" do
@@ -76,6 +102,7 @@ get "/nav" do
       <li><a href='/user_search'>User Search</a> Calls user_search - Search for users on instagram, by name or username</li>
       <li><a href='/location_search'>Location Search</a> Calls location_search - Search for a location by lat/lng</li>
       <li><a href='/tags/gramventuregardening'>Tags</a>Search for tags, view tag info and get media by tag</li>
+      <li><a href='/profile'>Profile</a>Go to the user's profile</li>
     </ol>
   """
   html
@@ -163,6 +190,7 @@ get "/tags/:hashtag" do
   end
   html
 end
+
 
 # get "/gramventures?status=[open,voting,closed]" 
 #   all GV data, filtered
