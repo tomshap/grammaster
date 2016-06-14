@@ -36,6 +36,13 @@ get '/gramventures' do
 
 end
 
+
+get '/gramventures/:id/submissions' do
+  @gramventure = Gramventure.find(params[:id])
+  @submission = @gramventure.submissions
+  @submission.to_json(include: {image: {include: :user } })
+end
+
 CALLBACK_URL = "http://localhost:3000/oauth/callback"
 
 Instagram.configure do |config|
