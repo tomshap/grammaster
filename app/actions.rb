@@ -30,7 +30,7 @@ end
 get "/oauth/callback" do
   response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL)
   session[:access_token] = response.access_token
-  redirect "/nav"
+  redirect "http://localhost:8080/#/connect?token=#{response.access_token}"
 end
 
 get "/nav" do
@@ -43,7 +43,7 @@ get "/nav" do
       <li><a href='/media_search'>Media Search</a> Calls media_search - Get a list of media close to a given latitude and longitude</li>
       <li><a href='/user_search'>User Search</a> Calls user_search - Search for users on instagram, by name or username</li>
       <li><a href='/location_search'>Location Search</a> Calls location_search - Search for a location by lat/lng</li>
-      <li><a href='/tags/gramventureroadtrip'>Tags</a>Search for tags, view tag info and get media by tag</li>
+      <li><a href='/tags/gramventuregardening'>Tags</a>Search for tags, view tag info and get media by tag</li>
     </ol>
   """
   html
@@ -79,6 +79,7 @@ get "/user_media_feed" do
   html += "<h3>#{user.bio}</h3>"
   html += "<h3>#{user.counts.media} photos posted</h3>"
   html += "<h4>#{user.website}</h4>"
+  html += "<h4>#{user.id}</h4>"
   # page_1 = client.user_media_feed(777)
   # page_2_max_id = page_1.pagination.next_max_id
   # page_2 = client.user_recent_media(777, :max_id => page_2_max_id ) unless page_2_max_id.nil?
@@ -92,7 +93,6 @@ get "/user_media_feed" do
   # end
   # html
 end
-
 
 get "/media_search" do
   client = Instagram.client(:access_token => session[:access_token])
@@ -132,5 +132,18 @@ get "/tags/:hashtag" do
   html
 end
 
+# get "/gramventures?status=[open,voting,closed]" 
+#   all GV data, filtered
+#     by status if available
 
+# get "/profile/images?tag=[hashtag]"
+#   all of current users images filtered by tag if present
 
+# post "/submissions"
+
+# get "/gramventures/:id/submissions"
+#   return ALL submissions, user and image data
+
+# post "/submissions/:id/vote"
+
+# get "/profile"

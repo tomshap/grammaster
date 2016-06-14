@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613213045) do
+ActiveRecord::Schema.define(version: 20160613224234) do
 
   create_table "gramventures", force: :cascade do |t|
     t.string   "cover_image_url"
@@ -42,12 +42,13 @@ ActiveRecord::Schema.define(version: 20160613213045) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "full_name"
-    t.string "email"
-    t.string "instagram_handle"
-    t.string "bio"
-    t.string "personal_website"
-    t.string "cover_image_url"
+    t.string  "full_name"
+    t.string  "email"
+    t.string  "instagram_handle"
+    t.string  "bio"
+    t.string  "personal_website"
+    t.string  "cover_image_url"
+    t.integer "instagram_id"
   end
 
   create_table "votes", force: :cascade do |t|
