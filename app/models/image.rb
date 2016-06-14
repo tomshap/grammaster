@@ -6,7 +6,7 @@ class Image < ActiveRecord::Base
   has_many :submissions
   
 
-  # validates :url, presence: true
+  validates :url, presence: true
   # validates :user_id, numericality: true
 
 

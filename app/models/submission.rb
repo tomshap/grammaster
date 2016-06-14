@@ -1,7 +1,7 @@
 class Submission < ActiveRecord::Base
 
   belongs_to :gramventure 
-  belongs_to :image #has_one?
+  belongs_to :image
   has_many :votes
 
   
