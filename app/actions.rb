@@ -1,16 +1,12 @@
 require 'sinatra/json'
 require 'instagram'
-
 enable :sessions
 
 # helpers do
-
-
-
-# def current_user
-#     session[:id] ? @current_user = User.find(session[:id]) : nil
-#   end
-# end
+# # def current_user
+# #     session[:id] ? @current_user = User.find(session[:id]) : nil
+# #   end
+# # end
 get '/' do
   erb :'index'
 end
@@ -21,7 +17,7 @@ end
 
 #Check with Horatiu
 post '/submissions' do
-  @submission = Submission.create(user_id: params[:cu], gramventure_id: params[:gramventure_id], image_id: params[:image_id])
+  @submission = Submission.create(gramventure_id: params[:gramventure_id], image_id: params[:image_id])
 end
 
 get '/gramventures' do
