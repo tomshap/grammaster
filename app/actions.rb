@@ -10,6 +10,18 @@ enable :sessions
 #     session[:id] ? @current_user = User.find(session[:id]) : nil
 #   end
 # end
+get '/' do
+  erb :'index'
+end
+
+post '/submission/:submission_id/vote' do
+  @vote = Vote.create(user_id: params[:cu], submission_id: params[:submission_id])
+end
+
+#Check with Horatiu
+post '/submissions' do
+  @submission = Submission.create(user_id: params[:cu], gramventure_id: params[:gramventure_id], image_id: params[:image_id])
+end
 
 get '/gramventures' do
   response.headers["Access-Control-Allow-Origin"] = "*"
@@ -37,9 +49,10 @@ end
 
 
 get '/gramventures/:id/submissions' do
+  response.headers["Access-Control-Allow-Origin"] = "*"
   @gramventure = Gramventure.find(params[:id])
   @submission = @gramventure.submissions
-  @submission.to_json(include: {image: {include: :user } })
+  @submission.to_json(include: {image: {include: :user} })
 end
 
 CALLBACK_URL = "http://localhost:3000/oauth/callback"
@@ -67,10 +80,20 @@ get "/oauth/callback" do
 end
 
 get "/login" do
+  response.headers["Access-Control-Allow-Origin"] = "*"
   client = Instagram.client(:access_token => params[:token])
   user = client.user
   User.where(instagram_id: user.id).to_json
 end
+
+get '/profile' do
+  response.headers["Access-Control-Allow-Origin"] = "*"
+  @user = User.find(params[:cu])
+  @user.to_json
+
+end
+
+
 
 get "/nav" do
   html =

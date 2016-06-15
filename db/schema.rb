@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614184202) do
+ActiveRecord::Schema.define(version: 20160614223243) do
 
   create_table "gramventures", force: :cascade do |t|
     t.string   "cover_image_url"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160614184202) do
   create_table "submissions", force: :cascade do |t|
     t.integer "image_id"
     t.integer "gramventure_id"
-    t.integer "total_votes"
+    t.integer "total_votes",    default: 0
   end
 
   create_table "usergramventures", force: :cascade do |t|
