@@ -92,16 +92,11 @@ get '/profile' do
   response.headers["Access-Control-Allow-Origin"] = "*"
   @user = User.find(params[:cu])
   @user.to_json
-
 end
 
 
 
-get "/profile" do
-  response.headers["Access-Control-Allow-Origin"] = "*"
-  @user = User.find(params[:cu])
-  @user.to_json
-end
+
 
 get "/profile/images" do
   response.headers["Access-Control-Allow-Origin"] = "*"
