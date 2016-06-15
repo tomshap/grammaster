@@ -61,7 +61,8 @@ get '/gramventures/:id/submissions' do
   response.headers["Access-Control-Allow-Origin"] = "*"
   @gramventure = Gramventure.find(params[:id])
   @submission = @gramventure.submissions
-  @submission.to_json(include: {image: {include: :user} })
+  @submission.to_json(include: {image: {include: :user} },
+                       include: :gramventure)
 end
 
 CALLBACK_URL = "http://localhost:3000/oauth/callback"
