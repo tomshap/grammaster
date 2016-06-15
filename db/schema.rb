@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614223243) do
+ActiveRecord::Schema.define(version: 20160615201229) do
 
   create_table "gramventures", force: :cascade do |t|
     t.string   "cover_image_url"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20160614223243) do
     t.text     "brief"
     t.datetime "submission_end"
     t.datetime "voting_end"
-    t.integer  "number_entries"
+    t.integer  "number_entries",        default: 0
     t.string   "prize"
     t.string   "hashtag"
     t.integer  "winning_submission_id"
