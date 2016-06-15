@@ -3,6 +3,17 @@ require 'instagram'
 
 enable :sessions
 
+
+before do
+  if request.request_method == 'OPTIONS'
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "POST"
+    response.headers["Access-Control-Allow-Headers"] = "Origin, X-Requested-With, Content-Type, Accept"
+
+    halt 200
+  end
+end
+
 # helpers do
 
 
@@ -16,6 +27,7 @@ get '/' do
 end
 
 post '/submission/:submission_id/vote' do
+    response.headers["Access-Control-Allow-Origin"] = "*"
   @vote = Vote.create(user_id: params[:cu], submission_id: params[:submission_id])
 end
 
