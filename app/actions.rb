@@ -101,10 +101,6 @@ get '/profile' do
   @user.to_json
 end
 
-
-
-
-
 get "/profile/images" do
   response.headers["Access-Control-Allow-Origin"] = "*"
   client = Instagram.client(:access_token => params[:token])
@@ -112,13 +108,14 @@ get "/profile/images" do
   images = client.tag_search("#{params[:hashtag]}")
   all_images = []
   for media_item in client.tag_recent_media(images[0].name)
-    url = media_item.images.standard_resolution.url.split('?')[0]
-    instagram_images = Image.find_by_url(url)
-    
-    if instagram_images.nil?
-      instagram_images = Image.create(url: url, user_id: params[:cu])
+    if @user.instagram_id == media_item.caption.from.id.to_i
+      url = media_item.images.standard_resolution.url.split('?')[0]
+      instagram_images = Image.find_by_url(url)
+      if instagram_images.nil?
+        instagram_images = Image.create(url: url, user_id: params[:cu])
+      end
+      all_images << instagram_images
     end
-    all_images << instagram_images
   end
   all_images.to_json
 end
