@@ -92,23 +92,17 @@
 @submission76 = Submission.create(image_id: "76", gramventure_id: "2")
 @submission77 = Submission.create(image_id: "77", gramventure_id: "2")
 @submission78 = Submission.create(image_id: "78", gramventure_id: "1")
-
 @submission79 = Submission.create(image_id: "79", gramventure_id: "3")
 @submission80 = Submission.create(image_id: "80", gramventure_id: "3")
-
 @submission81 = Submission.create(image_id: "81", gramventure_id: "5")
 @submission82 = Submission.create(image_id: "82", gramventure_id: "5")
-
 @submission83 = Submission.create(image_id: "83", gramventure_id: "6")
 @submission84 = Submission.create(image_id: "84", gramventure_id: "6")
 @submission85 = Submission.create(image_id: "85", gramventure_id: "6")
 @submission86 = Submission.create(image_id: "86", gramventure_id: "6")
-
 @submission87 = Submission.create(image_id: "87", gramventure_id: "1")
 @submission88 = Submission.create(image_id: "88", gramventure_id: "1")
-
 @submission89 = Submission.create(image_id: "89", gramventure_id: "4")
-
 @submission90 = Submission.create(image_id: "90", gramventure_id: "2")
 @vote1 = Vote.create(user_id: "1" , submission_id: "2")
 @vote2 = Vote.create(user_id: "3" , submission_id: "4")
@@ -207,7 +201,7 @@
 @image75 = Image.create(url: "https://scontent.cdninstagram.com/t51.2885-15/s480x480/e35/13392858_1237442966289831_773215842_n.jpg", user_id: "6")
 @image76 = Image.create(url: "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e35/13392648_1725244257714444_1980778330_n.jpg", user_id: "6")
 @image77 = Image.create(url: "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e35/13423550_1339938299355555_1729370259_n.jpg", user_id: "6")
-@image78 = Image.create(url: "ttps://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/13423530_1084592678280181_61982720_n.jpg", user_id: "6")
+@image78 = Image.create(url: "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/13423530_1084592678280181_61982720_n.jpg", user_id: "6")
 @image79 = Image.create(url: "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/13398845_194513617612655_992348669_n.jpg", user_id: "7")
 @image80 = Image.create(url: "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/13381097_1741500892794046_1270119503_n.jpg", user_id: "7")
 @image81 = Image.create(url: "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/13402412_1201851843183002_749849858_n.jpg", user_id: "7")
