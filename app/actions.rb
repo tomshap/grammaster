@@ -107,6 +107,12 @@ get '/profile' do
   @user.to_json
 end
 
+get '/profile/submissions' do
+  @user = User.find(params[:cu])
+  submissions = Submission.where('id = ?', @user.id)
+  submissions.to_json;
+end
+
 get "/profile/images" do
   response.headers["Access-Control-Allow-Origin"] = "*"
   client = Instagram.client(:access_token => params[:token])
