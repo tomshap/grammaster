@@ -23,12 +23,16 @@ get '/' do
 end
 
 post '/submission/:submission_id/vote' do
-    response.headers["Access-Control-Allow-Origin"] = "*"
+  response.headers["Access-Control-Allow-Origin"] = "*"
+  puts request.body.read
   @vote = Vote.create(user_id: params[:cu], submission_id: params[:submission_id])
 end
 
 #Check with Horatiu
-post '/submissions' do
+post '/submissions/:gramventure_id/:image_id' do
+  response.headers["Access-Control-Allow-Origin"] = "*"
+  # puts request.body.read
+  # params = JSON.parse(request.body.read)
   @submission = Submission.create(gramventure_id: params[:gramventure_id], image_id: params[:image_id])
 end
 
