@@ -27,6 +27,12 @@ post '/submission/:submission_id/vote' do
   @vote = Vote.create(user_id: params[:cu], submission_id: params[:submission_id])
 end
 
+get '/submission/:submission_id/vote' do
+  response.headers["Access-Control-Allow-Origin"] = "*"
+  @vote = Vote.where('submission_id = ? and user_id = ?', params[:submission_id], params[:cu])
+  @vote.to_json
+end 
+
 #Check with Horatiu
 post '/submissions' do
   @submission = Submission.create(gramventure_id: params[:gramventure_id], image_id: params[:image_id])
