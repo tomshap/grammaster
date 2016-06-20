@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615201229) do
+ActiveRecord::Schema.define(version: 20160620211354) do
 
   create_table "gramventures", force: :cascade do |t|
     t.string   "cover_image_url"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160615201229) do
     t.string   "prize"
     t.string   "hashtag"
     t.integer  "winning_submission_id"
+    t.string   "date_created"
   end
 
   create_table "images", force: :cascade do |t|
