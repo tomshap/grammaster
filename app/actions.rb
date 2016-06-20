@@ -108,9 +108,9 @@ get '/profile' do
 end
 
 get '/profile/submissions' do
+  response.headers["Access-Control-Allow-Origin"] = "*"
   @user = User.find(params[:cu])
-  submissions = Submission.where('id = ?', @user.id)
-  submissions.to_json;
+  @user.submissions.order(total_votes: :desc).to_json({include: :image})
 end
 
 get "/profile/images" do
