@@ -16,7 +16,7 @@ configure do
   set :root, APP_ROOT.to_path
   set :server, :puma
 
-  enable :sessions
+  enable :sessions, :logging
   set :session_secret, ENV['SESSION_KEY'] || 'lighthouselabssecret'
 
   set :views, File.join(Sinatra::Application.root, "app", "views")
@@ -25,6 +25,7 @@ end
 # Development and Test Sinatra Configuration
 configure :development, :test do
   require 'pry'
+  set :show_exceptions, true
 end
 
 # Production Sinatra Configuration
