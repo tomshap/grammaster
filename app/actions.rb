@@ -38,11 +38,6 @@ post '/submissions' do
   response.headers["Access-Control-Allow-Origin"] = "*"
   list_of_submissions = JSON.parse(request.body.read)
   #@submission = Submission.create(gramventure_id: params[:gramventure_id], image_id: params[:image_id])
-  puts " "
-  puts list_of_submissions
-  puts " "
-  puts " "
-  puts " "
   list_of_submissions.map do |submission|
     puts submission 
     puts "this is my puts" 
