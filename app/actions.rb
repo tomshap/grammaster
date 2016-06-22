@@ -125,7 +125,7 @@ get "/profile/images" do
   response.headers["Access-Control-Allow-Origin"] = "*"
   client = Instagram.client(:access_token => params[:token])
   @user = User.find(params[:cu])
-  @gram = Gramventure.find(params[:gramventure]) if (params[:gramventure]) != nil 
+  @gram = Gramventure.find(params[:gramventure]) if ((params[:gramventure]) != nil && (params[:gramventure]) != "")
   images = client.tag_search("#{params[:hashtag]}")
   all_images = []
   for media_item in client.tag_recent_media(images[0].name)
